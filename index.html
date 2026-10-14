@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Usine d'Agents</title>
+<!--RELAY-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=Cinzel:wght@500;700&family=EB+Garamond:wght@500;600&family=Pirata+One&family=Alegreya:wght@500;600;700&family=Chakra+Petch:wght@500;600;700&family=Fraunces:wght@600;700&family=Nunito:wght@500;600;700&family=Sora:wght@500;700&family=DM+Sans:wght@500;600;700&family=Rye&family=Rokkitt:wght@500;600;700&family=Exo+2:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="title">Usine d'Agents</h1>
+      <p class="sub" id="sub"></p>
+    </div>
+    <div class="controls">
+      <label class="themesel"><span>Thème</span><select id="themeSel" aria-label="Changer de thème visuel"></select></label>
+      <button class="btn" id="btnPlay" type="button">Pause</button>
+      <div class="seg" role="group" aria-label="Vitesse de la simulation">
+        <button class="btn" type="button" data-speed="1" aria-pressed="true">×1</button>
+        <button class="btn" type="button" data-speed="2" aria-pressed="false">×2</button>
+        <button class="btn" type="button" data-speed="4" aria-pressed="false">×4</button>
+      </div>
+      <button class="btn" id="btnAdd" type="button">Ajouter un agent</button>
+    </div>
+  </header>
+
+  <section class="stage" id="stage" aria-label="Scène">
+    <canvas id="scene" role="img" aria-label="Scène isométrique."></canvas>
+    <div class="tip" id="tip" role="tooltip" hidden></div>
+    <div class="summary" id="summary"></div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" aria-labelledby="hAgents">
+      <h2 id="hAgents">Qui est qui</h2>
+      <ul id="agentList"></ul>
+    </section>
+    <section class="panel" aria-labelledby="hLog">
+      <h2 id="hLog">Journal <button class="btn" id="btnCopy" type="button">Copier le journal</button></h2>
+      <ol class="log" id="log"></ol>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="hLegend">
+    <h2 id="hLegend">Zones et outils</h2>
+    <ul class="legend" id="legend"></ul>
+  </section>
+
+  <section class="panel" aria-labelledby="hLive">
+    <h2 id="hLive">Brancher votre IA en direct</h2>
+    <p>Lancez le relais sur votre ordinateur (voir le fichier LISEZMOI), puis collez son adresse ici. Les actions de votre IA apparaîtront en temps réel et remplaceront la simulation.</p>
+    <div class="row">
+      <input class="url" id="relayUrl" type="url" value="http://127.0.0.1:4317" spellcheck="false" aria-label="Adresse du relais">
+      <button class="btn" id="btnLive" type="button">Se connecter</button>
+      <button class="btn" id="btnLiveOff" type="button">Déconnecter</button>
+      <span class="msg" id="liveMsg" role="status"></span>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="hReplay">
+    <h2 id="hReplay">Rejouer vos événements</h2>
+    <p>Collez une ligne JSON par événement (même format que le journal copié). La scène se vide et ne montre que ces événements.</p>
+    <textarea id="replayIn" spellcheck="false" aria-label="Événements à rejouer, un objet JSON par ligne"></textarea>
+    <div class="row">
+      <button class="btn" id="btnReplay" type="button">Rejouer</button>
+      <button class="btn" id="btnSim" type="button">Revenir à la simulation</button>
+      <span class="msg" id="replayMsg" role="status"></span>
+    </div>
+  </section>
+
+  <p class="note">Sans relais, les événements de cette page sont simulés. Pour suivre une vraie session, lancez le relais local : il lit les hooks de votre IA et les transmet à la scène. Rien ne quitte votre ordinateur.</p>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

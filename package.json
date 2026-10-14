@@ -1,0 +1,15 @@
+{
+  "name": "agent-factory",
+  "version": "1.0.0",
+  "description": "Scène isométrique qui montre en direct le travail d'agents IA (hooks Claude Code).",
+  "private": true,
+  "scripts": {
+    "start": "node relay/server.js",
+    "test": "node --test",
+    "lint": "eslint js"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0"
+  }
+}
